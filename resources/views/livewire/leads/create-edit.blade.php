@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit="update">
+    <form wire:submit="createUpdate">
         <div class="grid grid-cols-4 gap-1 px-3">
             <div class="col-span-2">
                 <input type="text" placeholder="Иван Иванов" wire:model="form.name">
@@ -14,7 +14,7 @@
                 <input type="text" placeholder="Коммент" wire:model="form.comment">
             </div>
             <button class="btn btn-blue" type="submit">
-                Обновить
+                @isset($id)Обновить@elseСоздать@endif
             </button>
         </div>
     </form>

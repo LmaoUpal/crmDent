@@ -20,10 +20,19 @@ class CreateEdit extends Component
         $this->id = $id;
     }
 
-    public function update()
+    public function createUpdate()
     {
-        $this->form->update();
-        $this->dispatch('lead-updated', $this->id);
+        if (isset($this->id))
+        {
+            $this->form->update();
+            $this->dispatch('lead-updated', $this->id);
+            $this->id=null;
+        }else
+        {
+            $this->form->create();
+        }
+        $this->form->reset();
+        $this->dispatch('lead-updated');
     }
 
     public function render()
